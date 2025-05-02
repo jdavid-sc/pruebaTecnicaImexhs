@@ -1,59 +1,116 @@
 # PruebaTecnica1
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+para clonar este proyecto y correrlo se debe ejejcutar el comando:
+npm i
 
-## Development server
+Resumen de propiedades de Angular utilizadas
+🔹 Componentes
+Componentes para dividir la aplicación (AppComponent, SearchUserComponent, etc.)
 
-To start a local development server, run:
+Uso de @Component para definir la vista, el selector y los estilos de cada bloque.
+
+🔹 Routing
+Navegación entre páginas usando RouterModule y provideRouter.
+
+Configuración de rutas en app.routes.ts.
+
+Uso de <router-outlet> para cargar componentes según la ruta.
+
+🔹 Directivas estructurales
+@for (*ngFor) → Para iterar y mostrar dinámicamente los repositorios.
+
+@if (*ngIf) → Para mostrar u ocultar contenido basado en condiciones.
+
+ngClass → Para aplicar clases dinámicamente (por ejemplo, cuando querías estilos condicionales).
+
+🔹 Servicios
+Creación de un servicio (ReposService) para consumir la API de GitHub.
+
+Inyección de servicios usando inject en componentes standalone.
+
+Uso de HttpClient para llamadas HTTP (gracias a provideHttpClient).
+
+🔹 Observables
+Manejo de Observables en la respuesta de HTTP.
+
+Suscripción (.subscribe) para recibir datos asincrónicamente.
+
+Uso de map para transformar la respuesta del API antes de asignarla.
+
+🔹 Forms
+Formularios reactivos (Reactive Forms) para capturar el nombre de usuario:
+
+FormBuilder
+
+FormGroup
+
+FormControl
+
+Validaciones básicas (como requerir el nombre de usuario).
+
+🔹 HTTP Client
+Uso del módulo HttpClientModule para consumir APIs REST externas (GitHub).
+
+Manejo de errores de la petición (cuando el usuario no existe o no tiene repos).
+
+🔹 Standalone Components
+Configuración de tu app sin AppModule usando bootstrapApplication y ApplicationConfig (Angular Standalone).
+
+Registro de providers globales (provideHttpClient, provideRouter, provideZoneChangeDetection).
+
+🔹 Bootstrap
+Aplicación de estilos rápidos usando Bootstrap 5:
+
+Grid system (col-md-6, row, container, etc.).
+
+Cards para mostrar repositorios.
+
+Botones estilizados (btn, btn-primary, etc.).
+
+Paginación (pagination de Bootstrap).
+
+🔹 Paginación Manual
+Dividir el array de repositorios en páginas de 8 elementos.
+
+Controlar qué página está activa y actualizar la vista.
+
+🔹 Pruebas Unitarias (incompleto)
+Intento de generación de archivo .spec.ts para componentes.
+
+(Se podría hacer más, pero mínimo ya sabes que los tests van en archivos .spec.ts).
+
+Este proyecto fue generado usando [Angular CLI](https://github.com/angular/angular-cli) versión 19.2.4.
+
+## Servidor de desarrollo
+
+Para iniciar un servidor de desarrollo local, ejecuta
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Una vez que el servidor esté funcionando, abre tu navegador y navega hasta `http://localhost:4200/`. La aplicación se recargará automáticamente cada vez que modifiques alguno de los archivos fuente.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+## Construcción
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Para construir el proyecto ejecuta:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Esto compilará tu proyecto y almacenará los artefactos de compilación en el directorio `dist/`. Por defecto, la compilación de producción optimiza el rendimiento y la velocidad de tu aplicación.
 
-## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Ejecutar pruebas de extremo a extremo
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Para las pruebas de extremo a extremo (e2e), ejecute:
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Angular CLI no viene con un framework de pruebas end-to-end por defecto. Puedes elegir uno que se adapte a tus necesidades.
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
