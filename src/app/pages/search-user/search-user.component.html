@@ -1,0 +1,75 @@
+<div class="container mt-2">
+   <app-header></app-header>
+    <form [formGroup]="formulario">
+        <div class="mb-1 ">
+          <label for="exampleInputEmail1" class="form-label fw-bold">Ingresa tu usuario de github</label>
+          <input type="text" class="form-control col-5 " formControlName="usuario">
+          @if(!formValid){
+            <span class="">Debes llenar el campo d entrada correctamente</span>
+          }
+         
+        </div>
+       
+        <button (click)="obtenerRepos()" type="submit" class="btn btn-success ">Buscar Repositorio</button>
+        <button (click)="limpiarFormulario()" type="submit" class="btn btn-success ms-5 ">Limpiar</button>
+      </form>
+      <hr>
+      @if(sinRepos){
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+            Usuario ingresado no tiene repositorios publicos
+          </div>
+        </div>
+      }
+      
+      @if(UsuarioNoEncontrado){
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+            El usuario ingresado no existe en GitHub
+          </div>
+        </div>
+      }
+
+      <div class="container-cards">
+        @for(repo of reposPaginados; track repo.name ){
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{ repo.name }}</h5>
+              <p class="card-text">{{ repo.description || 'Sin descripción' }}</p>
+              <p class="card-text">
+              <p>{{repo.lenguaje}}</p>
+                <p>⭐ {{ repo.stars }} estrellas</p>
+              <a [href]="repo.url" target="_blank" class="btn btn-primary">
+                Ver repositorio
+              </a>
+            </div>
+          </div>
+        }
+      </div>
+      <nav  class="mt-2">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [class.disabled]="paginaActual === 1">
+            <button class="page-link" (click)="paginaAnterior()">Anterior</button>
+          </li>
+      
+          <li class="page-item disabled">
+            <span class="page-link">
+              Página {{ paginaActual }} de {{ totalPaginas }}
+            </span>
+          </li>
+      
+          <li class="page-item" [class.disabled]="paginaActual === totalPaginas">
+            <button class="page-link" (click)="paginaSiguiente()">Siguiente</button>
+          </li>
+        </ul>
+      </nav>
+      
+
+       
+      
+    
+</div>
+
+
